@@ -1,7 +1,4 @@
 import random
-
-
-
         
 def spr_wybor(wybor):
         try:
@@ -32,10 +29,16 @@ def wybor_gracza():
         except ValueError:
             print("To nie jest liczba. Podaj liczbę z zakresu 1-3!")
 
+def odrzucenie_gracza():
+    while True:
+        decyzja = input("Czy zmieniasz skrzynie? ").strip().lower()
+        if decyzja not in ("tak", "nie"):
+            print("zla decyzja")
+        else:
+            return decyzja
 
 
-
-# while True:
+# while True:c
 #     try:
 #         wybor_uzytkownika = int(input("Wybierz opcję (1-3): "))
 #         break
