@@ -16,7 +16,7 @@ while True:
         liczba_wygranych += 1
     else:
         liczba_przegranych += 1  
-    print(liczba_wygranych, liczba_przegranych)
+    print(f"Liczba wygranych: {liczba_wygranych}\nLiczba przegranych: {liczba_przegranych}")
 
 
 
