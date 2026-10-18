@@ -16,11 +16,19 @@ def odrzucenie_skrzyni(skrzynia_z_nagroda, wybor_uzytkownika):
             break
 
 def final(skrzynia_z_nagroda, wybor_uzytkownika, decyzja):
+    liczba_przegranych = 0
+    liczba_wygranych = 0
     if decyzja == "nie":
         if skrzynia_z_nagroda == wybor_uzytkownika:
             print("Wygrałeś")
-        else: print(f"Przegrałeś. Nagroda była w skrzyni {skrzynia_z_nagroda}")
+            return True
+        else: 
+            print(f"Przegrałeś. Nagroda była w skrzyni {skrzynia_z_nagroda}")
+            return False
     if decyzja == "tak":
         if skrzynia_z_nagroda == wybor_uzytkownika:
             print(f"Przegrałeś. Nagroda była w skrzyni {skrzynia_z_nagroda}")
-        else: print("Wygrałeś")
+            return False
+        else: 
+            print("Wygrałeś")
+            return True
