@@ -1,34 +1,25 @@
 import random
 
-def losowanie_nagrody():
-    skrzynia_z_nagroda = random.randint(1,3)
-    return skrzynia_z_nagroda
+def pick_reward() -> int:
+    return random.randint(1,3)
 
-def odrzucenie_skrzyni(skrzynia_z_nagroda, wybor_uzytkownika):
-    while True:
-        odrzucona_skrzynia = random.randint(1,3)
-        if odrzucona_skrzynia == skrzynia_z_nagroda:
-            continue
-        elif odrzucona_skrzynia == wybor_uzytkownika:
-            continue
-        else: 
-            print(f"Odrzucono: {odrzucona_skrzynia}")
-            break
+def box_reject(box_reward: int, user_choice: int) -> int:
+    available = [i for i in (1, 2, 3) if i != box_reward and i != user_choice]
+    print(available)
+    return random.choice(available)
 
-def final(skrzynia_z_nagroda, wybor_uzytkownika, decyzja):
-    liczba_przegranych = 0
-    liczba_wygranych = 0
-    if decyzja == "nie":
-        if skrzynia_z_nagroda == wybor_uzytkownika:
-            print("Wygrałeś")
+def final(box_reward, user_choice, decision):
+    if decision == "no":
+        if box_reward == user_choice:
+            print("You win")
             return True
         else: 
-            print(f"Przegrałeś. Nagroda była w skrzyni {skrzynia_z_nagroda}")
+            print(f"You lose. Reward was in the box {box_reward}")
             return False
-    if decyzja == "tak":
-        if skrzynia_z_nagroda == wybor_uzytkownika:
-            print(f"Przegrałeś. Nagroda była w skrzyni {skrzynia_z_nagroda}")
+    if decision == "yes":
+        if box_reward == user_choice:
+            print(f"You lose. Reward was in the box {box_reward}")
             return False
         else: 
-            print("Wygrałeś")
+            print("You win")
             return True
