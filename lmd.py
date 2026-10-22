@@ -1,23 +1,20 @@
-import random
 
-def wybor_gracza():
+def user_choice() -> int:
     while True:
         try:
-            wybor_uzytkownika = int(input("Wybierz skrzynie (1-3): "))
-            
-            if wybor_uzytkownika < 1 or wybor_uzytkownika > 3:
-                print(f"Podałeś {wybor_uzytkownika}. Liczba musi być z zakresu 1-3.\nMusisz podać jeszcze raz.")
-            else:
-                print(f"Wybrano {wybor_uzytkownika}")
-                return wybor_uzytkownika
+            choice = int(input("Choose a box (1-3): "))
+            if 1 <= choice <= 3:
+                print(f"Selected: {choice}")
+                return choice           
+            print(f"You entered {choice}. The number must be in the range 1-3.\nYou need to enter it again.")
                 
         except ValueError:
-            print("To nie jest liczba. Podaj liczbę z zakresu 1-3!")
+            print("This is not a number, Enter a number in the range 1-3")
 
-def odrzucenie_gracza():
+def get_player_decision() -> str:
     while True:
-        decyzja = input("Czy zmieniasz skrzynie? ").strip().lower()
-        if decyzja not in ("tak", "nie"):
-            print("zla decyzja")
-        else:
-            return decyzja
+        decision = input("Are you changing the box? (yes/no) ").strip().lower()
+        if decision in ("yes", "no"):
+            return decision
+        print("Wrong! You have to enter yes/no")
+        
