@@ -1,22 +1,32 @@
-from lmd import wybor_gracza, odrzucenie_gracza
-from logic import odrzucenie_skrzyni, losowanie_nagrody, final
+from lmd import user_choice, get_player_decision
+from logic import box_reject, pick_reward, check_win
 
-liczba_wygranych = 0
-liczba_przegranych = 0
+def run_game():
+    win_count = 0
+    lose_count = 0
 
-while True:
-    wybor = wybor_gracza()
-    nagroda = losowanie_nagrody()
-    odrzucenie_skrzyni(nagroda, wybor)
-    decyzja = odrzucenie_gracza()
+    while True:
+        reward = pick_reward()
+        choice = user_choice()
 
-    wygrana = final(nagroda, wybor, decyzja)
+        rejected = box_reject(reward, choice)
+        print(f"Box {rejected} is empty.")
 
-    if wygrana:
-        liczba_wygranych += 1
-    else:
-        liczba_przegranych += 1  
-    print(f"Liczba wygranych: {liczba_wygranych}\nLiczba przegranych: {liczba_przegranych}")
+        decision = get_player_decision()
+        win = check_win(reward, choice, decision)
 
+        if win:
+            win_count +=1
+            print("You win!")
+        else:
+            lose_count +=1
+            print(f"You lose. Reward was in box {reward}")
 
+        print(f"Wins: {win_count}\nLosses: {lose_count}\n")
 
+        again = input("Play again? (yes/no): ").strip().lower()
+        if again != "yes":
+            break
+
+if __name__ == "__main__":
+    run_game()
