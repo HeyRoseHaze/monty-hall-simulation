@@ -1,6 +1,6 @@
 import pytest
 from logic import pick_reward, box_reject, check_win
-from lmd import get_player_decision
+from lmd import get_player_decision, user_choice
 
 
 def test_pick_reward():
@@ -36,6 +36,13 @@ def test_check_win(box_reward, user_choice, decision, expected):
 def test_get_player_decision_uppercase(monkeypatch):
     monkeypatch.setattr("builtins.input", lambda _: "    YES   ")
     assert get_player_decision() == "yes"
+
+
+def test_user_choice(monkeypatch):
+    monkeypatch.setattr("builtins.input", lambda _: "2" )
+    assert user_choice() == 2
+
+
 
 
 
