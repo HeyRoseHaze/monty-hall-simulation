@@ -1,23 +1,17 @@
 import pytest
-from logic import pick_reward, box_reject, check_win
-from lmd import get_player_decision, user_choice
+import random
+from logic import pick_reward, get_alternative_box, check_win
+from lmd import get_player_decision, user_choice, game_parameters
 
 
 # Test for logic.py
 
 def test_pick_reward():
     for i in range(100):
-        reward = pick_reward()
-        assert reward in (1, 2, 3)
+        number = random.randint(1, 10**5)
+        reward = pick_reward(number)
+        assert reward in range(1, number+1)
 
-
-def test_box_reject():
-    for box_reward in (1, 2, 3):
-        for user_choice in (1, 2, 3):
-            rejected = box_reject(box_reward, user_choice)
-            assert rejected in (1, 2, 3)
-            assert rejected != box_reward
-            assert rejected != user_choice
 
 
 @pytest.mark.parametrize(
@@ -35,18 +29,27 @@ def test_check_win(box_reward, user_choice, decision, expected):
 
 
 # Tests for lmd.py
+# Tests game parameters
+def test_game_parameters(monkeypatch):
+    monkeypatch.setattr("builtins.input", lambda _: "100")
+    assert game_parameters() == 100
 
+def test_game_parameters_series(monkeypatch):
+    inputs = iter(["five", "100"])
+    monkeypatch.setattr("builtins.input", lambda _: next(inputs))
+    assert game_parameters() == 100
+
+# Test user choice
 def test_user_choice(monkeypatch):
     monkeypatch.setattr("builtins.input", lambda _: "2" )
-    assert user_choice() == 2
-
+    assert user_choice(100) == 2
 
 def test_user_choice_series(monkeypatch):
     inputs = iter(["no", "0", "5", "3"])
     monkeypatch.setattr("builtins.input", lambda _: next(inputs))
-    assert user_choice() == 3
+    assert user_choice(100) == 5
 
-
+# Test player decision
 def test_get_player_decision_uppercase(monkeypatch):
     monkeypatch.setattr("builtins.input", lambda _: "    YES   ")
     assert get_player_decision() == "yes"
