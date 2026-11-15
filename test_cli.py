@@ -1,6 +1,6 @@
 import pytest
 import random
-from lmd import get_player_decision, user_choice, game_parameters
+from cli import get_player_decision, user_choice, game_parameters
 
 # Tests game parameters
 def test_game_parameters(monkeypatch):

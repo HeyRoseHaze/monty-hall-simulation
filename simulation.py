@@ -1,4 +1,4 @@
-from lmd import user_choice, get_player_decision, game_parameters
+from cli import user_choice, get_player_decision, game_parameters
 from logic import get_alternative_box, pick_reward, check_win
 
 def run_game():

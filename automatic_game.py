@@ -19,7 +19,7 @@ def parse_args() -> argparse.Namespace:
     help="Number of boxes (default: 3)"
    )
    return parser.parse_args()
-
+   
 def strategy(decision: str, games_count: int, boxes_count: int)  -> int:
     wins = 0
     for _ in range(games_count):
@@ -32,6 +32,9 @@ def strategy(decision: str, games_count: int, boxes_count: int)  -> int:
 def simulation_games(games_count: int, boxes_count: int) -> None:
    if games_count <= 0:
       print("Error: The number of games must be greater than 0.")
+      return
+   if boxes_count < 3:
+      print("Error: The number of boxes cannot be less than 3.")
       return
 
    print(f"Number of boxes in the game: {boxes_count}")
