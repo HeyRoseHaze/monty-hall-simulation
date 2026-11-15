@@ -3,8 +3,11 @@ def game_parameters() -> int:
     while True:
         try:
             boxes_count = int(input("Choose a number of boxes: ") )
-            print(f'Number of boxes: {boxes_count}')
-            return boxes_count
+            if boxes_count < 3:
+                print("The number of boxes cannot be less than 3.")
+            else:
+                print(f'Number of boxes: {boxes_count}')
+                return boxes_count
         except ValueError:
             print("This is not a number. Enter a number.")
 
