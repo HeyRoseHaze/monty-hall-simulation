@@ -1,5 +1,5 @@
 import pytest
-from automatic_game import parse_args, simulation_games
+from automatic_game import parse_args, strategy, simulation_games
 
 # Tests for argparse
 
@@ -18,7 +18,19 @@ def test_parse_args_custom_values(monkeypatch):
     assert args.boxes == 10
 
 
-# Test for simulation games
+# Tests for strategy
+
+def test_strategy_correct_data():
+    games = 100
+    boxes = 3
+
+    wins, history = strategy('yes', games, boxes)
+
+
+    assert len(history) == games 
+    assert 0 <= wins <= games 
+
+# Tests for simulation games
 
 def test_simulation_games_invalid_games(capsys):
     simulation_games(0, 3)
