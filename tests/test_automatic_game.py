@@ -26,9 +26,11 @@ def test_strategy_correct_data():
 
     wins, history = strategy('yes', games, boxes)
 
-
     assert len(history) == games 
-    assert 0 <= wins <= games 
+    assert 0 <= wins <= games
+
+    assert isinstance(wins, int)
+    assert isinstance(history, list) 
 
 # Tests for simulation games
 
