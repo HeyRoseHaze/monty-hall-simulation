@@ -38,7 +38,7 @@ def simulate_strategy(decision: str, games_count: int, boxes_count: int)  -> tup
         history.append((wins / game) * 100) 
     return wins, history
 
-def simulation_games(games_count: int, boxes_count: int, plot: bool = False) -> None:
+def run_simulation(games_count: int, boxes_count: int, plot: bool = False) -> None:
    if games_count <= 0:
       print("Error: The number of games must be greater than 0.")
       return
@@ -72,7 +72,7 @@ def simulation_games(games_count: int, boxes_count: int, plot: bool = False) -> 
 
 if __name__=="__main__":
     args = parse_args()
-    simulation_games(args.games, args.boxes, plot=args.plot)
+    run_simulation(args.games, args.boxes, plot=args.plot)
 
 
         

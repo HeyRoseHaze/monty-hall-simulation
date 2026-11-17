@@ -1,5 +1,5 @@
 import pytest
-from automatic_game import parse_args, simulate_strategy, simulation_games
+from automatic_game import parse_args, simulate_strategy, run_simulation
 
 # Tests for argparse
 
@@ -35,13 +35,13 @@ def test_strategy_correct_data():
 # Tests for simulation games
 
 def test_simulation_games_invalid_games(capsys):
-    simulation_games(0, 3)
+    run_simulation(0, 3)
 
     captured = capsys.readouterr()
     assert captured.out == "Error: The number of games must be greater than 0.\n"
 
 def test_simulation_games_invalid_boxes(capsys):
-    simulation_games(10, 2)
+    run_simulation(10, 2)
 
     captured = capsys.readouterr()
     assert captured.out == "Error: The number of boxes cannot be less than 3.\n"
