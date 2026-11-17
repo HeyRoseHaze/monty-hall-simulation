@@ -26,7 +26,7 @@ def parse_args() -> argparse.Namespace:
    )
    return parser.parse_args()
    
-def strategy(decision: str, games_count: int, boxes_count: int)  -> tuple[int, list[float]]:
+def simulate_strategy(decision: str, games_count: int, boxes_count: int)  -> tuple[int, list[float]]:
     wins = 0
     history: list[float] = []
 
@@ -50,7 +50,7 @@ def simulation_games(games_count: int, boxes_count: int, plot: bool = False) -> 
    histories: dict[str, list[float]] = {}
 
    for decision in ("yes", "no"):
-      wins, history = strategy(decision, games_count, boxes_count)
+      wins, history = simulate_strategy(decision, games_count, boxes_count)
       histories[decision] = history
 
       losses = games_count - wins

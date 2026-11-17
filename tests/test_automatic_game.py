@@ -1,5 +1,5 @@
 import pytest
-from automatic_game import parse_args, strategy, simulation_games
+from automatic_game import parse_args, simulate_strategy, simulation_games
 
 # Tests for argparse
 
@@ -24,7 +24,7 @@ def test_strategy_correct_data():
     games = 100
     boxes = 3
 
-    wins, history = strategy('yes', games, boxes)
+    wins, history = simulate_strategy('yes', games, boxes)
 
     assert len(history) == games 
     assert 0 <= wins <= games
