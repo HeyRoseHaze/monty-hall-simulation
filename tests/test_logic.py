@@ -2,7 +2,7 @@ import pytest
 import random
 from logic import pick_reward, get_alternative_box, check_win
 
-def test_pick_reward():
+def test_pick_reward() -> None:
     # check whether the reward is in the range (1, boxes_count)
     for _ in range(100):
         number = random.randint(1, 10**5)
@@ -10,7 +10,7 @@ def test_pick_reward():
         assert reward in range(1, number+1)
 
 
-def test_get_alternative_box():
+def test_get_alternative_box() -> None:
     for boxes_count in range(3, 16):
         for box_reward in range(1, boxes_count+1):
             for user_choice in range(1, boxes_count+1):
@@ -18,8 +18,7 @@ def test_get_alternative_box():
 
                 assert alternative != user_choice
                 assert  1 <= alternative <= boxes_count+1
-
-                
+       
                 if user_choice != box_reward:
                     assert alternative == box_reward
 
@@ -35,5 +34,5 @@ def test_get_alternative_box():
         (100, 50, "yes", True)
     ]
 )
-def test_check_win(box_reward, user_choice, decision, expected):
+def test_check_win(box_reward: int, user_choice: int, decision: str, expected: bool) -> None:
     assert check_win(box_reward, user_choice, decision) is expected
