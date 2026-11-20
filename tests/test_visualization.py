@@ -16,3 +16,5 @@ def test_plot_results_creates_files(tmp_path: Path) -> None:
 
     assert saved_file == str(temp_file)
     assert os.path.exists(saved_file)
+
+    
