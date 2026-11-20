@@ -1,7 +1,7 @@
 from cli import user_choice, get_player_decision, game_parameters
 from logic import get_alternative_box, pick_reward, check_win
 
-def run_game():
+def run_game() -> None:
     win_count = 0
     lose_count = 0
 
