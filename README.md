@@ -1,4 +1,5 @@
 ﻿# Monty Hall Paradox Simulator
+![CI](https://github.com/HeyRoseHaze/monty-hall-simulation/actions/workflows/ci.yml/badge.svg)
 
 A Python CLI simulator demonstrating the Monty Hall probability paradox across a customizable number of boxes and simulation runs, complete with Matplotlib convergence visualization.
 
